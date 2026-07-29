@@ -704,19 +704,41 @@ input, select, textarea {
 			}
 
 		.image.main {
-			display: block;
-			margin: 2.5rem 0;
-			width: 100%;
+			display: inline-block;
+			margin: 1rem 1%;
+			width: 48%;
+			vertical-align: top;
 		}
 
 			.image.main img {
 				width: 100%;
+				height: auto;
+				margin: 0 auto;
 			}
+
+
+		/* Center the images as a group and eliminate whitespace between inline-block elements */
+		#main article {
+		    text-align: center;
+		    font-size: 0;
+		}
+
+		/* Keep all text left-aligned and restore font size */
+		#main article p,
+		#main article h2,
+		#main article h3,
+		#main article ol,
+		#main article ul {
+		    text-align: left;
+		    font-size: 1rem;
+		}
+
 
 		@media screen and (max-width: 736px) {
 
 			.image.main {
-				margin: 2rem 0;
+				width: 100%;
+				margin: 2rem auto;
 			}
 
 		}
@@ -724,7 +746,8 @@ input, select, textarea {
 		@media screen and (max-width: 480px) {
 
 			.image.main {
-				margin: 1.5rem 0;
+				width: 100%;
+				margin: 1.5rem auto;
 			}
 
 		}
@@ -1167,11 +1190,20 @@ input, select, textarea {
 			-webkit-transition: -webkit-transform 0.325s ease-in-out, -webkit-filter 0.325s ease-in-out;
 			-ms-transition: -ms-transform 0.325s ease-in-out, -ms-filter 0.325s ease-in-out;
 			transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out;
-			background-image: url("../../images/bg.gif");
 			background-position: center;
 			background-size: cover;
 			background-repeat: no-repeat;
 			z-index: 1;
+		}
+
+		#bg-video {
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+	    object-fit: cover;
+	    z-index: 1;
 		}
 
 		body.is-article-visible #bg:after {
@@ -1291,6 +1323,11 @@ input, select, textarea {
 				background: #ffffff;
 			}
 
+			/* Realign the connector line to sit under the repositioned avatar instead of the header's center */
+			#header .content:before {
+				left: calc(100% - 15.5rem / 2 - 1px);
+			}
+
 		#header > :first-child {
 			margin-top: 0;
 		}
@@ -1319,10 +1356,16 @@ input, select, textarea {
 			border-radius: 100%;
 		}
 
+		/* Shifts the avatar to the right instead of staying centered like the rest of #header's items */
+		#header .image.avatar-right {
+			align-self: flex-end;
+		}
+
 		        .image img {
 			    border-radius: 5px;
 			    display: block;
 			}
+
 
 			.image.left {
 			    float: left;
@@ -1603,7 +1646,7 @@ input, select, textarea {
 			transition: opacity 0.325s ease-in-out, transform 0.325s ease-in-out;
 			padding: 4.5rem 2.5rem 1.5rem 2.5rem ;
 			position: relative;
-			width: 40rem;
+			width: 65rem;
 			max-width: 100%;
 			background-color: rgba(27, 31, 34, 0.85);
 			border-radius: 4px;
